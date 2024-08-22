@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+.container{
+    position:relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    padding: 30px;
+    background: radial-gradient(circle, rgba(58,86,159,1) 29%, rgba(2,51,116,1) 98%);
+}
+
+.links a{
+    font-size: 1em;
+    color: #fff;
+    font-weight: 300;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.links a:hover{
+    color: #d5d5d5;
+}
+
+.content{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    text-align: left;
+}
+
+.content-box h2{
+    color: #fff;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.content-box h1{
+    color: #fff;
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 35px;
+    line-height: 40px;
+}
+
+.circle{
+    position: relative;
+    width: 350px;
+    height: 345px;
+    border-radius: 50%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.circle img {
+    max-width: 100%;
+    max-height: 100%;
+}
