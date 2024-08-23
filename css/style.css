@@ -54,6 +54,24 @@
     line-height: 40px;
 }
 
+.content-box a{
+    font-size: 1em;
+    color: #fff;
+    background: rgb(2, 112, 146);
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 19px;
+    margin: 10px 0;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.content-box a:hover{
+    background: #fff;
+    color: rgb(2, 112, 146);
+}
+
+
 .sci{
     display: flex;
     align-items: center;
@@ -80,6 +98,13 @@
     transform: translateY(-10px);
 }
 
+.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
 .circle{
     position: relative;
     width: 350px;
@@ -98,6 +123,5 @@
 .circle {
     border: 3px solid #59fff7;
     box-shadow: 0 0 50px rgba(48, 255, 238, 0.3);
-    animation: rotate 10s linear infinite;
-    
+    animation: rotate 10s linear infinite;   
 }
