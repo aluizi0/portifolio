@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    padding: 30px;
+    background: radial-gradient(circle, rgba(58,86,159,1) 29%, rgba(2,51,116,1) 98%);
+}
+
+.links a {
+    font-size: 1em;
+    color: #fff;
+    font-weight: 300;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.links a:hover {
+    color: #d5d5d5;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.content-box {
+    color: #fff;
+    font-size: 2em;
+    font-weight: 100;
+    margin-bottom: 20px; /* Ajusta o espaço abaixo do título */
+}
+
+.columns {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 20px; /* Espaçamento entre as colunas */
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project {
+    text-align: center;
+}
+
+.square {
+    width: 300px;
+    height: 300px;
+    background-color: transparent;
+    border: 4px solid #fff;
+    border-radius: 15px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 2px solid #fff;
+}
+
+.project-title {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+    color: #fff;
+}
+
+.project-description {
+    font-size: 0.9em;
+    color: #ddd;
+}
