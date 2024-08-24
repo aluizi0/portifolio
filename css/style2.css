@@ -96,6 +96,18 @@
     color: #ddd;
 }
 
+.square img {
+    width: 100%;
+    height: 100%;
+    filter: blur(2px);
+    object-fit: fill;
+}
+
+.square:hover img {
+    filter: blur(0);
+    transition: filter 0.3s ease-in-out;
+}
+
 @media screen and (max-width: 768px) {
     .columns {
         flex-direction: column;

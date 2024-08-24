@@ -1,7 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.links a {
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 300;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-family: 'Pixelify Sans', sans-serif;
 }
 
 :root {
@@ -117,4 +129,23 @@ input {
 .success {
     border-color: var(--primary-color) !important;
     color: var(--primary-color) !important;
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        padding: 0 1rem 2.5rem;
+    }
+
+    #keys {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #keys button {
+        font-size: 1.25rem;
+    }
+
+    input {
+        font-size: 1.5rem;
+    }
+    
 }
