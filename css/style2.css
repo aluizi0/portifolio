@@ -95,3 +95,14 @@
     font-size: 0.9em;
     color: #ddd;
 }
+
+@media screen and (max-width: 768px) {
+    .columns {
+        flex-direction: column;
+    }
+
+    .square {
+        width: 100%;
+    }
+    
+}
