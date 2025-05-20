@@ -22,7 +22,7 @@
             <h1>Calculator</h1>
             <button id="themeSwitcher">Switch Theme Dark/Light</button>
         </header>
-        <input type="text" id="input">
+        <input type="text" id="input" readonly placeholder="Cálculo">
         <div id="keys">
             <button id="clear">C</button>
             <button class="charKey" data-value=" ( ">(</button>
@@ -47,8 +47,7 @@
         </div>
         <section class="flex align-center justify-between">
             <button id="copyToClipboard">Copy</button>
-            <input type="text" id="result" disabled>
-        </section>
+            <input type="text" id="result" disabled placeholder="Resultado" title="Resultado do cálculo">
     </main>
 </body>
 
