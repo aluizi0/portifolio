@@ -30,7 +30,7 @@ O site principal (`index.html`) conta com diversos recursos interativos:
 
 ---
 
-## 🚀 Projetos Integrados
+## 🚀 Projetos Básicos Integrados
 
 Além da página de apresentação, este repositório contém aplicações web completas desenvolvidas com JavaScript Puro (Vanilla JS):
 
@@ -39,10 +39,6 @@ Um planejador diário com design baseado em **Neumorphism** (luz e sombra suave)
 * **Funcionalidades:** Calendário interativo, Adicionar/Remover tarefas, Persistência de dados.
 * **Tech:** Lógica de datas avançada em JS, CSS Variáveis.
 
-### 2. [Finanças App](./projetos/financas)
-Sistema de controle de fluxo de caixa pessoal.
-* **Funcionalidades:** Cálculo automático de saldo, Entradas/Saídas, Histórico.
-* **Tech:** Manipulação do DOM e LocalStorage.
 
 ---
 
