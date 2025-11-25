@@ -14,7 +14,7 @@ Este repositório hospeda meu site pessoal e portfólio, servindo como hub centr
 ## 🌐 Demonstração Online
 
 Acesse o projeto ao vivo:
-👉 **[https://aluizi0.github.io/](https://aluizi0.github.io/)**
+👉 **[https://aluizi0.github.io/](https://aluizi0.github.io/portifolio)**
 
 ---
 
