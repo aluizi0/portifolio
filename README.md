@@ -5,6 +5,11 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
+<div align="center">
+  <img src="img/preview.jpg" alt="Preview do Portfólio" width="100%">
+</div>
+<br>
+
 > "Transformando ideias em produtos digitais de alta qualidade."
 
 Este repositório hospeda meu site pessoal e portfólio, servindo como hub central para meus projetos, currículo e contatos. O projeto foi desenvolvido com foco em **Design Responsivo**, **UX/UI Moderno** e **Código Limpo**.
@@ -63,3 +68,10 @@ aluizio.github.io/
 │   ├── agenda/      # Projeto Agenda Soft UI
 ├── index.html       # Página Principal
 └── README.md        # Documentação
+```
+
+📬 Contato
+
+Gostou do meu trabalho? Vamos conversar!
+
+<a href="https://www.linkedin.com/in/devaluizi0/" target="_blank"> <img src="https://www.google.com/search?q=https://img.shields.io/badge/-LinkedIn-%25230077B5%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" target="_blank"> </a> <a href="https://www.google.com/search?q=https://wa.me/5561986092868" target="_blank"> <img src="https://www.google.com/search?q=https://img.shields.io/badge/-WhatsApp-%252325D366%3Fstyle%3Dfor-the-badge%26logo%3Dwhatsapp%26logoColor%3Dwhite" target="_blank"> </a> <a href="mailto:goncalves.oliveiraaluizio@gmail.com" target="_blank"> <img src="https://www.google.com/search?q=https://img.shields.io/badge/-Gmail-%2523D14836%3Fstyle%3Dfor-the-badge%26logo%3Dgmail%26logoColor%3Dwhite" target="_blank"> </a>
