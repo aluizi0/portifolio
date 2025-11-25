@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             "Desenvolvedor Full Stack",
             "Estudante de Ciência da Computação",
             "Entusiasta de IA & Automação",
-            "Apaixonado por Java & React"
         ];
         
         let textIndex = 0;
