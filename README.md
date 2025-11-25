@@ -40,10 +40,11 @@ O site principal (`index.html`) conta com diversos recursos interativos:
 Além da página de apresentação, este repositório contém aplicações web completas desenvolvidas com JavaScript Puro (Vanilla JS):
 
 ### 1. [Agenda Soft UI (Neumorphism)](./projetos/agenda)
+
 Um planejador diário com design baseado em **Neumorphism** (luz e sombra suave).
+
 * **Funcionalidades:** Calendário interativo, Adicionar/Remover tarefas, Persistência de dados.
 * **Tech:** Lógica de datas avançada em JS, CSS Variáveis.
-
 
 ---
 
@@ -69,9 +70,3 @@ aluizio.github.io/
 ├── index.html       # Página Principal
 └── README.md        # Documentação
 ```
-
-📬 Contato
-
-Gostou do meu trabalho? Vamos conversar!
-
-<a href="https://www.linkedin.com/in/devaluizi0/" target="_blank"> <img src="https://www.google.com/search?q=https://img.shields.io/badge/-LinkedIn-%25230077B5%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" target="_blank"> </a> <a href="https://www.google.com/search?q=https://wa.me/5561986092868" target="_blank"> <img src="https://www.google.com/search?q=https://img.shields.io/badge/-WhatsApp-%252325D366%3Fstyle%3Dfor-the-badge%26logo%3Dwhatsapp%26logoColor%3Dwhite" target="_blank"> </a> <a href="mailto:goncalves.oliveiraaluizio@gmail.com" target="_blank"> <img src="https://www.google.com/search?q=https://img.shields.io/badge/-Gmail-%2523D14836%3Fstyle%3Dfor-the-badge%26logo%3Dgmail%26logoColor%3Dwhite" target="_blank"> </a>
