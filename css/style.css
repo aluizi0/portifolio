@@ -279,12 +279,63 @@ h3 {
     50% { opacity: 0; }
 }
 
-/* --- RESPONSIVIDADE --- */
+/* --- RESPONSIVIDADE (CELULAR) --- */
 @media (max-width: 768px) {
-    .grid-layout { grid-template-columns: 1fr; gap: 2rem; }
-    .main-container { padding: 1.5rem; margin: 10px; }
-    .profile-name { font-size: 1.8rem; }
+    .main-container {
+        padding: 1.5rem;
+        margin: 10px;
+        width: auto; /* Garante que não estoure a tela */
+    }
+
+    /* 1. Arrumar o E-mail Longo */
+    .contact-info {
+        flex-direction: column; /* Coloca um item embaixo do outro */
+        gap: 0.8rem; /* Espaço entre os itens */
+    }
+
+    .contact-info span {
+        font-size: 0.9rem; /* Diminui um pouquinho a fonte */
+        word-break: break-word; /* Força o email a quebrar linha se não couber */
+        text-align: center;
+        width: 100%; /* Garante que ocupe a linha para centralizar */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 2. Arrumar os Links Sociais (GitHub, Whats, CV) */
+    .social-buttons {
+        display: flex;
+        flex-wrap: wrap; /* Permite que os botões caiam para a linha de baixo se faltar espaço */
+        justify-content: center; /* Centraliza tudo perfeitamente */
+        gap: 15px; /* Espaçamento uniforme entre eles */
+        margin-top: 2rem;
+    }
+
+    .social-buttons a {
+        margin: 0; /* Remove margens antigas para o 'gap' controlar o espaço */
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Ajuste extra para o botão de CV não ficar gigante ou torto */
+    .download-cv {
+        width: 100%; /* No celular, o botão de CV fica legal ocupando a largura ou... */
+        max-width: 200px; /* ...limitado a um tamanho bonito */
+        justify-content: center;
+        margin-top: 10px; /* Dá um espacinho extra dos ícones */
+    }
     
-    /* Desativa efeito 3D no mobile */
+    .profile-name {
+        font-size: 1.8rem;
+        word-wrap: break-word; /* Evita que nomes muito longos estourem */
+    }
+
+    /* Desativa efeito 3D no mobile (já estava, mas mantendo) */
     .project-card { transform: none !important; }
+    
+    /* Layout de uma coluna */
+    .grid-layout { grid-template-columns: 1fr; gap: 2rem; }
 }
