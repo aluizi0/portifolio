@@ -1,122 +1,69 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. ALTERNAR TEMA (DARK / LIGHT MODE) ---
-    const themeBtn = document.getElementById('theme-toggle');
-    const body = document.body;
-    // Seleciona o ícone dentro do botão
-    const icon = themeBtn.querySelector('i'); 
+    // --- MENU ATIVO NO SCROLL ---
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-item");
 
-    // Função para aplicar o tema visualmente
-    function applyTheme(theme) {
-        if (theme === 'light') {
-            body.classList.add('light-mode');
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            body.classList.remove('light-mode');
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
+    function changeLinkState() {
+        let index = sections.length;
+
+        // O valor 200 ajuda a trocar a cor um pouco antes de chegar na seção
+        while(--index && window.scrollY + 200 < sections[index].offsetTop) {}
+        
+        navLinks.forEach((link) => link.classList.remove("active"));
+        
+        // Adiciona active se houver uma seção correspondente
+        if(index >= 0) {
+            navLinks[index].classList.add("active");
         }
     }
+    
+    changeLinkState();
+    window.addEventListener("scroll", changeLinkState);
 
-    // Verifica se o usuário já tinha escolhido um tema antes
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        applyTheme(savedTheme);
-    }
+    // --- CONTADORES (STATS) ---
+    const counters = document.querySelectorAll('.counter');
+    const speed = 150; 
 
-    themeBtn.addEventListener('click', () => {
-        // Alterna a classe no body
-        body.classList.toggle('light-mode');
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText.replace('+', '');
+                const inc = target / speed;
 
-        // Salva a preferência e troca o ícone
-        if (body.classList.contains('light-mode')) {
-            localStorage.setItem('theme', 'light');
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            localStorage.setItem('theme', 'dark');
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    });
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 25);
+                } else {
+                    if (target > 5 && target < 1000) { 
+                        counter.innerText = target + "+"; 
+                    } else {
+                        counter.innerText = target;
+                    }
+                }
+            };
+            updateCount();
+        });
+    };
+    animateCounters();
 
-    // --- 2. ANIMAÇÃO DE SCROLL (Intersection Observer) ---
-    const elementsToReveal = document.querySelectorAll('section, .project-card, .profile-header');
-    elementsToReveal.forEach(el => el.classList.add('reveal'));
-
+    // --- ANIMAÇÃO SKILLS ---
+    const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); 
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
             }
         });
-    }, { threshold: 0.15 });
+    }, observerOptions);
 
-    elementsToReveal.forEach(el => observer.observe(el));
-
-    // --- 3. EFEITO DE DIGITAÇÃO ---
-    const roleElement = document.querySelector('.profile-role');
-    if(roleElement) { // Verificação de segurança
-        roleElement.classList.add('typing-cursor'); 
-        
-        const texts = [
-            "Desenvolvedor Full Stack",
-            "Estudante de Ciência da Computação",
-            "Entusiasta de IA & Automação",
-        ];
-        
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function typeEffect() {
-            const currentText = texts[textIndex];
-            
-            if (isDeleting) {
-                roleElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                roleElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && charIndex === currentText.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(typeEffect, typeSpeed);
-        }
-        typeEffect();
-    }
-
-    // --- 4. EFEITO TILT 3D (Apenas Desktop) ---
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            if (window.innerWidth < 768) return;
-            
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -10;
-            const rotateY = ((x - centerX) / centerX) * 10;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-        });
+    const cards = document.querySelectorAll('.skill-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        card.style.transition = `all 0.5s ease ${index * 0.05}s`; 
+        observer.observe(card);
     });
 });
