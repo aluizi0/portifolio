@@ -13,7 +13,7 @@
 
 html {
     scroll-behavior: smooth;
-    /* scroll-snap-type desativado para evitar bugs no mobile */
+    /* scroll-snap-type removido para evitar travamentos no mobile */
 }
 
 body {
@@ -28,7 +28,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 8%;
+    padding: 15px 5%;
     position: fixed;
     width: 100%;
     top: 0;
@@ -74,13 +74,15 @@ body {
 .btn-hire:hover { transform: translateY(-2px); box-shadow: 0 0 20px var(--accent-glow); }
 
 /* --- HERO SECTION --- */
+/* Estilo base para desktop */
 .full-screen {
     min-height: 100vh;
     width: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 80px; /* Espaço para navbar */
+    padding-top: 80px; 
 }
 
 .hero-container {
@@ -90,7 +92,7 @@ body {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 8%;
+    padding: 0 10%;
     flex-grow: 1; /* Ocupa espaço disponível */
 }
 
@@ -109,7 +111,7 @@ body {
 
 .hero-title {
     font-family: var(--font-heading);
-    /* CLAMP: O tamanho da fonte muda fluidamente entre 2.5rem e 4.5rem conforme a tela */
+    /* Fonte fluida */
     font-size: clamp(2.5rem, 5vw, 4.5rem); 
     line-height: 1.1;
     font-weight: 700;
@@ -158,15 +160,14 @@ body {
 /* --- IMAGEM & BORDA --- */
 .hero-image-wrapper {
     position: relative;
-    /* Tamanho fixo base para desktop */
     width: 400px;
     height: 400px;
     display: flex; align-items: center; justify-content: center;
 }
 
 .profile-img {
-    width: 90%; /* Relativo ao wrapper */
-    height: 90%;
+    width: 360px; /* Um pouco menor que o wrapper */
+    height: 360px;
     border-radius: 50%;
     object-fit: cover;
     z-index: 2;
@@ -278,25 +279,47 @@ body {
 /* ------------------------------------------------ */
 
 @media (max-width: 992px) {
-    /* Navbar: Esconde links no tablet/mobile para não quebrar */
+    /* Navbar: Esconde os links do meio para não quebrar */
     .nav-links { display: none; }
-    .hero { padding-top: 100px; }
     
-    /* Hero Layout em Coluna */
+    /* Remove a altura forçada no mobile! Isso que estava quebrando */
+    .full-screen {
+        min-height: auto;
+        height: auto;
+        display: block; /* Remove Flexbox centralizado */
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    /* Hero */
     .hero-container {
-        flex-direction: column-reverse; /* Imagem em cima, Texto embaixo */
+        flex-direction: column-reverse; /* Imagem em cima, texto embaixo */
         text-align: center;
-        gap: 40px;
-        padding-bottom: 40px;
+        padding: 0 5%;
     }
     
-    .hero-content { align-items: center; display: flex; flex-direction: column; width: 100%; }
-    .hero-description { margin-left: auto; margin-right: auto; }
-    .hero-buttons { justify-content: center; }
+    .hero-content { margin-top: 30px; align-items: center; display: flex; flex-direction: column; }
+    .hero-title { font-size: 2.5rem; } /* Fonte menor */
+    .hero-buttons { flex-direction: column; width: 100%; }
+    .btn-outline-large { width: 100%; justify-content: center; }
+
+    /* Imagem menor e responsiva */
+    .hero-image-wrapper { width: 280px; height: 280px; margin: 0 auto; }
+    .profile-img { width: 250px; height: 250px; }
+    .rotating-border { width: 280px; height: 280px; }
+    .rotating-border circle { r: 138; cx: 140; cy: 140; } /* Ajuste SVG */
+
+    /* Stats em grade */
+    .stats-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 30px 5%; margin-top: 30px; }
+    .stat-item { text-align: center; }
     
-    /* Ajuste Stats para tablet */
-    .stats-bar { flex-wrap: wrap; justify-content: center; gap: 40px; }
-    .stat-item { flex-direction: column; text-align: center; gap: 5px; }
+    /* Skills */
+    .skills-section { padding: 60px 5%; display: block; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* 2 colunas */
+    .section-title { font-size: 2rem; }
+
+    /* Footer empilhado */
+    .footer-container { flex-direction: column; }
 }
 
 @media (max-width: 600px) {
