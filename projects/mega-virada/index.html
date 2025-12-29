@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottery Analytics | Projects</title>
+    
+    <link rel="icon" href="../../img/LogoPortfolio.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <a href="../../index.html" class="btn-back">
+        <i class="fas fa-arrow-left"></i> Retornar
+    </a>
+
+    <div class="container">
+        <header>
+            <h1 class="title">Lottery <span class="highlight">Analytics</span></h1>
+            <p class="subtitle">
+                Sistema de análise probabilística e geração de combinações otimizadas baseado em 
+                <strong>15 anos de dados históricos</strong> da loteria nacional. Utiliza algoritmos de filtragem para identificar padrões recorrentes.
+            </p>
+        </header>
+
+        <main class="grid-layout">
+            <div class="card stats-card">
+                <h2>Análise de Frequência</h2>
+                <p class="card-desc">Mapeamento dos números com maior e menor incidência nos sorteios passados.</p>
+                
+                <div class="stat-group">
+                    <span class="label">Maior Incidência</span>
+                    <div class="balls-row" id="hotNumbers">Carregando dados...</div>
+                </div>
+
+                <div class="stat-group">
+                    <span class="label">Menor Incidência</span>
+                    <div class="balls-row" id="coldNumbers">Carregando dados...</div>
+                </div>
+            </div>
+
+            <div class="card generator-card">
+                <h2>Gerador Estocástico</h2>
+                <p class="card-desc">Algoritmo que gera combinações balanceadas, evitando vícios numéricos comuns.</p>
+
+                <div class="result-box" id="generatedResult">
+                    <span class="placeholder">Aguardando solicitação...</span>
+                </div>
+
+                <button id="btnGenerate" class="btn-neon full-width">
+                    Gerar Combinação
+                </button>
+                
+                <p id="analysisText" class="analysis-msg"></p>
+            </div>
+
+            <div class="card analysis-card" style="grid-column: 1 / -1;">
+                <h2>Dados de jogos anteriores</h2>
+                
+                <div class="analysis-grid">
+                    <div class="chart-box">
+                        <h4>Distribuição de Paridade</h4>
+                        <p class="desc-text">Análise da proporção entre números pares e ímpares em todos os concursos registrados. O gráfico demonstra a tendência de equilíbrio estatístico.</p>
+                        
+                        <div class="bar-chart">
+                            <div class="bar-group">
+                                <span class="bar-label">3P / 3Í</span>
+                                <div class="bar-track"><div class="bar-fill" id="bar33" style="width: 0%"></div></div>
+                                <span class="bar-value" id="val33">0%</span>
+                            </div>
+                            <div class="bar-group">
+                                <span class="bar-label">4P / 2Í</span>
+                                <div class="bar-track"><div class="bar-fill" id="bar42" style="width: 0%"></div></div>
+                                <span class="bar-value" id="val42">0%</span>
+                            </div>
+                            <div class="bar-group">
+                                <span class="bar-label">2P / 4Í</span>
+                                <div class="bar-track"><div class="bar-fill" id="bar24" style="width: 0%"></div></div>
+                                <span class="bar-value" id="val24">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checker-box">
+                        <h4>Validação Histórica</h4>
+                        <p class="desc-text">Verifique se uma combinação específica já foi sorteada anteriormente na base de dados. Útil para testar a viabilidade de sequências.</p>
+                        
+                        <div class="input-grid">
+                            <input type="number" class="num-input" min="1" max="60" placeholder="00">
+                            <input type="number" class="num-input" min="1" max="60" placeholder="00">
+                            <input type="number" class="num-input" min="1" max="60" placeholder="00">
+                            <input type="number" class="num-input" min="1" max="60" placeholder="00">
+                            <input type="number" class="num-input" min="1" max="60" placeholder="00">
+                            <input type="number" class="num-input" min="1" max="60" placeholder="00">
+                        </div>
+                        
+                        <button id="btnCheck" class="btn-neon full-width" style="margin-top: 20px;">
+                            Consultar Base de Dados
+                        </button>
+                        <p id="checkResult" class="check-msg"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
