@@ -66,34 +66,82 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
     }
 
-    // --- GERADOR ---
+    // --- LÓGICA DO GERADOR INTELIGENTE (COM FILTROS PROBABILÍSTICOS) ---
     const btnGen = document.getElementById('btnGenerate');
+    
     if(btnGen) {
         btnGen.addEventListener('click', () => {
             const resultBox = document.getElementById('generatedResult');
             const msg = document.getElementById('analysisText');
             
-            resultBox.innerHTML = '<span style="color:#666">Processando algoritmo...</span>';
+            // 1. Feedback visual de processamento
+            resultBox.innerHTML = '<span style="color:#666">Aplicando filtros estatísticos...</span>';
             msg.innerText = "";
 
+            // Pequeno delay para simular o processamento
             setTimeout(() => {
-                const numbers = new Set();
-                while(numbers.size < 6) {
-                    numbers.add(Math.floor(Math.random() * 60) + 1);
-                }
-                const final = Array.from(numbers).sort((a, b) => a - b);
+                let validGame = null;
+                let attempts = 0;
 
-                resultBox.innerHTML = final.map(n => 
+                // 2. Loop de Filtragem (Tenta até 5000 vezes achar um jogo ideal)
+                while (!validGame && attempts < 5000) {
+                    const tempNumbers = new Set();
+                    
+                    // Gera 6 números aleatórios
+                    while(tempNumbers.size < 6) {
+                        tempNumbers.add(Math.floor(Math.random() * 60) + 1);
+                    }
+                    
+                    const arrayNums = Array.from(tempNumbers).sort((a, b) => a - b);
+
+                    // --- APLICAÇÃO DOS FILTROS (HEURÍSTICA) ---
+
+                    // Filtro 1: Equilíbrio Par/Ímpar
+                    // Aceitamos apenas distribuições mais prováveis: 3/3, 4/2 ou 2/4
+                    const oddCount = arrayNums.filter(n => n % 2 !== 0).length;
+                    const isBalanced = (oddCount >= 2 && oddCount <= 4);
+
+                    // Filtro 2: Soma das Dezenas (Distribuição Normal)
+                    // A soma estatisticamente mais provável fica entre 130 e 240
+                    const sum = arrayNums.reduce((a, b) => a + b, 0);
+                    const isSumGood = (sum >= 130 && sum <= 240);
+
+                    // Se passar nos dois filtros, é um jogo válido!
+                    if (isBalanced && isSumGood) {
+                        validGame = arrayNums;
+                    }
+                    
+                    attempts++;
+                }
+
+                // Fallback: Se não achar (muito raro), usa um aleatório simples
+                if (!validGame) {
+                    const fallback = new Set();
+                    while(fallback.size < 6) fallback.add(Math.floor(Math.random() * 60) + 1);
+                    validGame = Array.from(fallback).sort((a, b) => a - b);
+                }
+
+                // 3. Renderiza o Resultado
+                resultBox.innerHTML = validGame.map(n => 
                     `<div class="ball result">${n.toString().padStart(2, '0')}</div>`
                 ).join('');
 
-                const odd = final.filter(n => n % 2 !== 0).length;
+                // 4. Exibe a Análise Técnica do Jogo
+                const odd = validGame.filter(n => n % 2 !== 0).length;
                 const even = 6 - odd;
-                msg.innerHTML = `Distribuição gerada: <strong style="color:#fff">${odd} Ímpares</strong> / <strong style="color:#fff">${even} Pares</strong>.`;
-            }, 600);
+                const totalSum = validGame.reduce((a, b) => a + b, 0);
+                
+                msg.innerHTML = `
+                    <div style="font-size: 0.9rem; color: #ccc; margin-top: 10px;">
+                        <div><strong style="color:var(--accent-color)">Padrão Par/Ímpar:</strong> ${odd} Ímpares / ${even} Pares</div>
+                        <div><strong style="color:var(--accent-color)">Soma das Dezenas:</strong> ${totalSum} (Intervalo ideal 130-240)</div>
+                    </div>
+                `;
+                
+            }, 800); // Delay de 800ms
         });
     }
-
+    
     // --- CONFERIDOR ---
     const btnCheck = document.getElementById('btnCheck');
     if(btnCheck) {
